@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: desafio-sre-app
+  labels:
+    app: desafio-sre-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: desafio-sre-app
+  template:
+    metadata:
+      labels:
+        app: desafio-sre-app
+    spec:
+      containers:
+      - name: app
+        # INFORMAÇÃO CRÍTICA: A URL do ECR com a tag 'v1'
+        image: 027922993398.dkr.ecr.us-east-1.amazonaws.com/desafio-sre-app:v1
+        ports:
+        - containerPort: 8080 # Porta que sua aplicação Python usa
+        env:
+        # Variáveis de Conexão (Use as saídas do Terraform!)
+        - name: DB_HOST
+          value: "desafio-sre-postgres-db.cc9ewquagf0o.us-east-1.rds.amazonaws.com"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          # CUIDADO: Em ambiente real, use um Secret do K8s, não valor hardcoded!
+          value: "SenhaSegura2025#$!"
+        - name: REDIS_ENDPOINT
+          value: "<ENDPOINT_DO_REDIS_AQUI>" # Obtenha de 'terraform output redis_endpoint'
+        - name: KAFKA_BROKERS
+          value: "<BROKERS_DO_KAFKA_AQUI>" # Obtenha de 'terraform output kafka_bootstrap_brokers_plaintext'
