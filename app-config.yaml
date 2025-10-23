@@ -8,3 +8,5 @@ data:
   redis_endpoint: desafio-sre-redis-cache.t8qlwj.0001.use1.cache.amazonaws.com
   # Use aspas simples aqui para garantir que toda a string seja lida como um valor:
   kafka_brokers: 'b-1.desafiosrekafkacluste.7ri6vc.c24.kafka.us-east-1.amazonaws.com:9092,b-2.desafiosrekafkacluste.7ri6vc.c24.kafka.us-east-1.amazonaws.com:9092'
+
+
