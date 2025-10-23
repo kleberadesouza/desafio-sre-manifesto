@@ -4,7 +4,7 @@ metadata:
   name: app-config
   namespace: default
 data:
-  
   db_host: "desafio-sre-postgres-db.cc9ewquagf0o.us-east-1.rds.amazonaws.com"
-  redis_endpoint: "desafio-sre-redis-cache.t8qlwj.0001.use1.cache.amazonaws.com" 
-  kafka_brokers: ""
+  redis_endpoint: "desafio-sre-redis-cache.t8qlwj.0001.use1.cache.amazonaws.com"
+  # Substitua pelo valor real:
+  kafka_brokers: "b-1.desafiosrekafkacluste.7ri6vc.c24.kafka.us-east-1.amazonaws.com:9092,b-2.desafiosrekafkacluste.7ri6vc.c24.kafka.us-east-1.amazonaws.com:9092"
