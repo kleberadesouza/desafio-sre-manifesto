@@ -22,30 +22,33 @@ spec:
         - containerPort: 8080 
         env:
         
-        - name: DB_HOST
+        # --- CORRIGINDO OS NOMES DO POSTGRES ---
+        - name: POSTGRES_HOST  # MUDADO DE DB_HOST PARA POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: db_host
-        - name: REDIS_ENDPOINT
+        - name: POSTGRES_USER  # MUDADO DE DB_USER PARA POSTGRES_USER (do Secret)
+          valueFrom:
+            secretKeyRef:
+              name: bd-credentials
+              key: DB_USER       # A CHAVE AINDA É DB_USER NO SECRET
+        - name: POSTGRES_PASSWORD # MUDADO DE DB_PASSWORD PARA POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bd-credentials
+              key: DB_PASSWORD     # A CHAVE AINDA É DB_PASSWORD NO SECRET
+              
+        # --- CORRIGINDO O NOME DO REDIS ---
+        - name: REDIS_HOST # MUDADO DE REDIS_ENDPOINT PARA REDIS_HOST
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: redis_endpoint
+
+        # KAFKA (Nome da variável é KAFKA_BROKERS, se a app ler assim)
         - name: KAFKA_BROKERS
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: kafka_brokers
-              
-        
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: bd-credentials
-              key: DB_USER          
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: bd-credentials
-              key: DB_PASSWORD
