@@ -17,36 +17,36 @@ spec:
       containers:
       - name: app
         
-        image: 027922993398.dkr.ecr.us-east-1.amazonaws.com/desafio-sre-app:v1
+        image: 027922993398.dkr.ecr.us-east-1.amazonaws.com/desafio-sre-app:v2
         ports:
         - containerPort: 8080 
         env:
         
-        # --- CORRIGINDO OS NOMES DO POSTGRES ---
-        - name: POSTGRES_HOST  # MUDADO DE DB_HOST PARA POSTGRES_HOST
+        
+        - name: POSTGRES_HOST 
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: db_host
-        - name: POSTGRES_USER  # MUDADO DE DB_USER PARA POSTGRES_USER (do Secret)
+        - name: POSTGRES_USER 
           valueFrom:
             secretKeyRef:
               name: bd-credentials
-              key: DB_USER       # A CHAVE AINDA É DB_USER NO SECRET
-        - name: POSTGRES_PASSWORD # MUDADO DE DB_PASSWORD PARA POSTGRES_PASSWORD
+              key: DB_USER       
+        - name: POSTGRES_PASSWORD 
           valueFrom:
             secretKeyRef:
               name: bd-credentials
-              key: DB_PASSWORD     # A CHAVE AINDA É DB_PASSWORD NO SECRET
+              key: DB_PASSWORD   
               
-        # --- CORRIGINDO O NOME DO REDIS ---
-        - name: REDIS_HOST # MUDADO DE REDIS_ENDPOINT PARA REDIS_HOST
+       
+        - name: REDIS_HOST 
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: redis_endpoint
 
-        # KAFKA (Nome da variável é KAFKA_BROKERS, se a app ler assim)
+        
         - name: KAFKA_BROKERS
           valueFrom:
             configMapKeyRef:
