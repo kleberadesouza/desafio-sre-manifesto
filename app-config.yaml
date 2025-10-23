@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: default
+data:
+  
+  db_host: "desafio-sre-postgres-db.cc9ewquagf0o.us-east-1.rds.amazonaws.com"
+  redis_endpoint: "desafio-sre-redis-cache.t8qlwj.0001.use1.cache.amazonaws.com" 
+  kafka_brokers: "desafio-sre-postgres-db.cc9ewquagf0o.us-east-1.rds.amazonaws.com"

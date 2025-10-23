@@ -7,6 +7,6 @@ spec:
     app: desafio-sre-app
   ports:
     - protocol: TCP
-      port: 80 # Porta pública (Load Balancer)
-      targetPort: 8080 # Porta do Container
-  type: LoadBalancer # CRÍTICO: Cria um AWS Load Balancer para acesso externo
+      port: 80 
+      targetPort: 8080 
+  type: LoadBalancer 
