@@ -17,7 +17,7 @@ spec:
       containers:
       - name: app
         
-        image: 027922993398.dkr.ecr.us-east-1.amazonaws.com/desafio-sre-app:v2
+        image: 027922993398.dkr.ecr.us-east-1.amazonaws.com/desafio-sre-app:v3
         ports:
         - containerPort: 8080 
         env:
